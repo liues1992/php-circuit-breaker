@@ -18,7 +18,7 @@ use Ejsmont\CircuitBreaker\Storage\StorageException;
 /**
  * Parent with potentially reusable functions of cache adapters
  * 
- * @see Ejsmont\CircuitBreaker\Storage\StorageInterface
+ * @see \Ejsmont\CircuitBreaker\Storage\StorageInterface
  * @package Ejsmont\CircuitBreaker\Components
  */
 abstract class BaseAdapter implements StorageInterface {
@@ -56,7 +56,7 @@ abstract class BaseAdapter implements StorageInterface {
      * @param 	string  $attributeName name of attribute to load
      * @return 	string  value stored or '' if value was not found
      *  
-     * @throws Ejsmont\CircuitBreaker\Storage\StorageException if storage error occurs, handler can not be used
+     * @throws \Ejsmont\CircuitBreaker\Storage\StorageException if storage error occurs, handler can not be used
      */
     public function loadStatus($serviceName, $attributeName) {
         // make sure extension is loaded
@@ -85,7 +85,7 @@ abstract class BaseAdapter implements StorageInterface {
      * @param   boolean $flush         set to true will force immediate save, false does not guaranteed saving at all.
      * @return 	void
      * 
-     * @throws Ejsmont\CircuitBreaker\Storage\StorageException if storage error occurs, handler can not be used
+     * @throws \Ejsmont\CircuitBreaker\Storage\StorageException if storage error occurs, handler can not be used
      */
     public function saveStatus($serviceName, $attributeName, $value, $flush = false) {
         // make sure extension is loaded
@@ -97,7 +97,7 @@ abstract class BaseAdapter implements StorageInterface {
     /**
      * Helper method to make sure that extension is loaded (implementation dependent)
      * 
-     * @throws Ejsmont\CircuitBreaker\Storage\StorageException if extension is not loaded
+     * @throws \Ejsmont\CircuitBreaker\Storage\StorageException if extension is not loaded
      * @return void
      */
     abstract protected function checkExtension();
@@ -108,7 +108,7 @@ abstract class BaseAdapter implements StorageInterface {
      * @param string $key
      * @return mixed
      * 
-     * @throws Ejsmont\CircuitBreaker\Storage\StorageException if storage error occurs, handler can not be used
+     * @throws \Ejsmont\CircuitBreaker\Storage\StorageException if storage error occurs, handler can not be used
      */
     abstract protected function load($key);
 
@@ -120,7 +120,7 @@ abstract class BaseAdapter implements StorageInterface {
      * @param int $ttl
      * @return void
      * 
-     * @throws Ejsmont\CircuitBreaker\Storage\StorageException if storage error occurs, handler can not be used
+     * @throws \Ejsmont\CircuitBreaker\Storage\StorageException if storage error occurs, handler can not be used
      */
     abstract protected function save($key, $value, $ttl);
 }

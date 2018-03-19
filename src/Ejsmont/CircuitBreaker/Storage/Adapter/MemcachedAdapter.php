@@ -21,20 +21,20 @@ use Ejsmont\CircuitBreaker\Storage\StorageException;
  * memeory is preferred but if extra millisecods are not an issue this 
  * adapter could work well. Consider using array adapter to minimise memcache calls.
  * 
- * @see Ejsmont\CircuitBreaker\Storage\StorageInterface
+ * @see \Ejsmont\CircuitBreaker\Storage\StorageInterface
  * @package Ejsmont\CircuitBreaker\Components
  */
 class MemcachedAdapter extends BaseAdapter {
 
     /**
-     * @var Memcached
+     * @var \Memcached
      */
     private $memcached;
 
     /**
      * Prepare instance
      * 
-     * @param Memcached $memcached
+     * @param \Memcached $memcached
      */
     public function __construct(\Memcached $memcached, $ttl = 3600, $cachePrefix = false) {
         parent::__construct($ttl, $cachePrefix);
@@ -44,7 +44,7 @@ class MemcachedAdapter extends BaseAdapter {
     /**
      * Helper method to make sure that memcached extension is loaded
      * 
-     * @throws Ejsmont\CircuitBreaker\Storage\StorageException if memcached is not loaded
+     * @throws \Ejsmont\CircuitBreaker\Storage\StorageException if memcached is not loaded
      * @return void
      */
     protected function checkExtension() {
@@ -57,7 +57,7 @@ class MemcachedAdapter extends BaseAdapter {
      * @param string $key
      * @return mixed
      * 
-     * @throws Ejsmont\CircuitBreaker\Storage\StorageException if storage error occurs, handler can not be used
+     * @throws \Ejsmont\CircuitBreaker\Storage\StorageException if storage error occurs, handler can not be used
      */
     protected function load($key) {
         try {
@@ -75,7 +75,7 @@ class MemcachedAdapter extends BaseAdapter {
      * @param int $ttl
      * @return void
      * 
-     * @throws Ejsmont\CircuitBreaker\Storage\StorageException if storage error occurs, handler can not be used
+     * @throws \Ejsmont\CircuitBreaker\Storage\StorageException if storage error occurs, handler can not be used
      */
     protected function save($key, $value, $ttl) {
         try {

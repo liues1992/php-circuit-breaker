@@ -4,7 +4,7 @@ namespace Tests\Unit\Ejsmont\CircuitBreaker\Adapter;
 
 use Ejsmont\CircuitBreaker\Storage\Adapter\MemcachedAdapter;
 
-class MemcachedAdapterTest extends \PHPUnit_Framework_TestCase {
+class MemcachedAdapterTest extends \PHPUnit\Framework\TestCase {
 
     /**
      * @var MemcachedAdapter 
@@ -89,10 +89,10 @@ class MemcachedAdapterTest extends \PHPUnit_Framework_TestCase {
     }
 
     /**
-     * @expectedException Ejsmont\CircuitBreaker\Storage\StorageException 
+     * @expectedException \Ejsmont\CircuitBreaker\Storage\StorageException
      */
     public function testFailSave() {
-        $memcachedMock = $this->getMock("Memcached", array('get', 'set'), array(), "", false);
+        $memcachedMock = $this->createMock("Memcached");
         $memcachedMock->expects($this->once())->method("set")->will($this->throwException(new \Exception("some error")));
         
         $adapter = new MemcachedAdapter($memcachedMock);
@@ -100,10 +100,10 @@ class MemcachedAdapterTest extends \PHPUnit_Framework_TestCase {
     }
 
     /**
-     * @expectedException Ejsmont\CircuitBreaker\Storage\StorageException 
+     * @expectedException \Ejsmont\CircuitBreaker\Storage\StorageException
      */
     public function testFailLoad() {
-        $memcachedMock = $this->getMock("Memcached", array('get', 'set'), array(), "", false);
+        $memcachedMock = $this->createMock("Memcached");
         $memcachedMock->expects($this->once())->method("get")->will($this->throwException(new \Exception("some error")));
         
         $adapter = new MemcachedAdapter($memcachedMock);

@@ -5,13 +5,13 @@ namespace Tests\Unit\Ejsmont\CircuitBreaker;
 use Ejsmont\CircuitBreaker\Factory;
 use Ejsmont\CircuitBreaker\CircuitBreakerInterface;
 
-class FactoryTest extends \PHPUnit_Framework_TestCase {
+class FactoryTest extends \PHPUnit\Framework\TestCase {
 
     public function testThreshold() {
-        if(!function_exists('apc_clear_cache')){
+        if(!function_exists('apcu_clear_cache')){
             $this->markTestSkipped("APC not installed");
         }
-        apc_clear_cache('user');
+        apcu_clear_cache();
     
         $factory = new Factory();
         $cb = $factory->getSingleApcInstance(3);

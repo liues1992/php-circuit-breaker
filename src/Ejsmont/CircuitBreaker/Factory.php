@@ -21,7 +21,7 @@ use Ejsmont\CircuitBreaker\Storage\Decorator\ArrayDecorator;
 /**
  * Allows easy assembly of circuit breaker instances.
  * 
- * @see Ejsmont\CircuitBreaker\CircuitBreakerInterface
+ * @see \Ejsmont\CircuitBreaker\CircuitBreakerInterface
  * @package Ejsmont\CircuitBreaker\PublicApi 
  */
 class Factory {
@@ -58,7 +58,7 @@ class Factory {
     /**
      * Creates a circuit breaker with same settings for all services using memcached instance as a backend
      *
-     * @param Memcached $memcached      instance of a connected Memcached object
+     * @param \Memcached $memcached      instance of a connected Memcached object
      * @param int       $maxFailures    how many times do we allow service to fail before considering it offline
      * @param int       $retryTimeout   how many seconds should we wait before attempting retry
      * 

@@ -12,7 +12,6 @@
 
 namespace Ejsmont\CircuitBreaker\Storage\Adapter;
 
-use Ejsmont\CircuitBreaker\Storage\Adapter\BaseAdapter;
 use Ejsmont\CircuitBreaker\Storage\StorageException;
 
 /**
@@ -21,7 +20,7 @@ use Ejsmont\CircuitBreaker\Storage\StorageException;
  * Does not introduce remote point of failure.
  * Can be efficently used to load/save each attribute separately if you wish
  * 
- * @see Ejsmont\CircuitBreaker\Storage\StorageInterface
+ * @see \Ejsmont\CircuitBreaker\Storage\StorageInterface
  * @package Ejsmont\CircuitBreaker\Components
  */
 class ApcAdapter extends BaseAdapter {
@@ -39,12 +38,12 @@ class ApcAdapter extends BaseAdapter {
     /**
      * Helper method to make sure that APC extension is loaded
      * 
-     * @throws Ejsmont\CircuitBreaker\Storage\StorageException if APC is not loaded
+     * @throws \Ejsmont\CircuitBreaker\Storage\StorageException if APC is not loaded
      * @return void
      */
     protected function checkExtension() {
-        if (!function_exists("apc_store")) {
-            throw new StorageException("APC extension not loaded.");
+        if (!function_exists("apcu_store")) {
+            throw new StorageException("APCu extension not loaded.");
         }
     }
 
@@ -54,10 +53,10 @@ class ApcAdapter extends BaseAdapter {
      * @param string $key
      * @return mixed
      * 
-     * @throws Ejsmont\CircuitBreaker\Storage\StorageException if storage error occurs, handler can not be used
+     * @throws \Ejsmont\CircuitBreaker\Storage\StorageException if storage error occurs, handler can not be used
      */
     protected function load($key) {
-        return apc_fetch($key);
+        return apcu_fetch($key);
     }
 
     /**
@@ -68,10 +67,10 @@ class ApcAdapter extends BaseAdapter {
      * @param int $ttl
      * @return void
      * 
-     * @throws Ejsmont\CircuitBreaker\Storage\StorageException if storage error occurs, handler can not be used
+     * @throws \Ejsmont\CircuitBreaker\Storage\StorageException if storage error occurs, handler can not be used
      */
     protected function save($key, $value, $ttl) {
-        $result = apc_store($key, $value, $ttl);
+        $result = apcu_store($key, $value, $ttl);
         if ($result === false) {
             throw new StorageException("Failed to save apc key: $key");
         }

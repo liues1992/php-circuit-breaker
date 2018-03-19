@@ -18,7 +18,7 @@ use Ejsmont\CircuitBreaker\Storage\StorageInterface;
 /**
  * Allows user code to track avability of any service by serviceName.
  * 
- * @see Ejsmont\CircuitBreaker\CircuitBreakerInterface
+ * @see \Ejsmont\CircuitBreaker\CircuitBreakerInterface
  * @package Ejsmont\CircuitBreaker\Components
  */
 class CircuitBreaker implements CircuitBreakerInterface {

@@ -6,7 +6,7 @@ use Ejsmont\CircuitBreaker\Storage\Adapter\ApcAdapter;
 use Ejsmont\CircuitBreaker\Storage\Decorator\ArrayDecorator;
 use Ejsmont\CircuitBreaker\Storage\StorageException;
 
-class ArrayDecoratorTest extends \PHPUnit_Framework_TestCase {
+class ArrayDecoratorTest extends \PHPUnit\Framework\TestCase {
 
     /**
      * @var ArrayDecorator 
@@ -16,10 +16,10 @@ class ArrayDecoratorTest extends \PHPUnit_Framework_TestCase {
     protected function setUp() {
         parent::setUp();
 
-        if(!function_exists('apc_clear_cache')){
+        if(!function_exists('apcu_clear_cache')){
             $this->markTestSkipped("APC not installed");
         }
-        apc_clear_cache('user');
+        apcu_clear_cache();
 
         $this->adapter = new ArrayDecorator(new ApcAdapter());
     }
@@ -69,7 +69,7 @@ class ArrayDecoratorTest extends \PHPUnit_Framework_TestCase {
         $this->adapter->saveStatus('AAAC', 'BBBC', "valB", true);
         // value loaded from array
         $this->assertEquals("valB", $this->adapter->loadStatus('AAAC', 'BBBC'));
-        apc_clear_cache('user');
+        apcu_clear_cache();
         $this->assertEquals("valB", $this->adapter->loadStatus('AAAC', 'BBBC'));
     }
 

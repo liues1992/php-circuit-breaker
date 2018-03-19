@@ -22,7 +22,7 @@ use Ejsmont\CircuitBreaker\Storage\StorageInterface;
  * When real storage handler throws exception it means it cant be used any more.
  * Then storage user can safely fallback to this dummy instance.
  * 
- * @see Ejsmont\CircuitBreaker\Storage\StorageInterface
+ * @see \Ejsmont\CircuitBreaker\Storage\StorageInterface
  * @package Ejsmont\CircuitBreaker\Components
  */
 class DummyAdapter implements StorageInterface {

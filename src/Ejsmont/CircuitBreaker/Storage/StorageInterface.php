@@ -12,7 +12,6 @@
 
 namespace Ejsmont\CircuitBreaker\Storage;
 
-use Ejsmont\CircuitBreaker\Storage\StorageException;
 
 /**
  * Interface defines methods for storage adapters/decorators for the circuit breaker persistance.
@@ -34,7 +33,7 @@ interface StorageInterface {
      * @param 	string  $attributeName name of attribute to load
      * @return 	string  value stored or '' if value was not found
      *  
-     * @throws Ejsmont\CircuitBreaker\Storage\StorageException if storage error occurs, handler can not be used
+     * @throws \Ejsmont\CircuitBreaker\Storage\StorageException if storage error occurs, handler can not be used
      */
     public function loadStatus($serviceName, $attributeName);
 
@@ -53,7 +52,7 @@ interface StorageInterface {
      * @param   boolean $flush         set to true will force immediate save, false does not guaranteed saving at all.
      * @return 	void
      * 
-     * @throws Ejsmont\CircuitBreaker\Storage\StorageException if storage error occurs, handler can not be used
+     * @throws \Ejsmont\CircuitBreaker\Storage\StorageException if storage error occurs, handler can not be used
      */
     public function saveStatus($serviceName, $attributeName, $value, $flush = false);
 }
